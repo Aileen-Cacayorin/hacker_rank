@@ -10,14 +10,28 @@ function calculator() {
 
                 } else if (value == "=") {
                     var values = getOperandsAndOperator();
+                    var final;
+                    try {
                       if (values[0] == "+") {
-                        var sum = add(values[1], values[2]);
-                        results.innerHTML = sum;
-                      }
+                        final = add(values[1], values[2]);
+
+                      } else if (values[0] == "-") {
+                        final = sub(values[1], values[2]);
+
+                      } else if (values[0] == "*") {
+                        final = multiply(values[1], values[2])
+
+                      } else if (values[0] == "/") {
+                        final = divide(values[1], values[2])
+                      };
+
+                    } finally {
+                        results.innerHTML = final;
+                    };
                 } else {
                     var resultsValue = results.innerHTML;
                     results.innerHTML = resultsValue + value;
-                }
+                };
             };
   document.getElementById("btn0").addEventListener("click", action);
   document.getElementById("btn1").addEventListener("click", action);
@@ -41,5 +55,21 @@ function getOperandsAndOperator() {
 
 function add(value1, value2) {
   var sum = parseInt(value1+value2, 10).toString(2);
-  return sum
+  return sum;
+}
+
+function sub(value1, value2) {
+  var diff= parseInt(value1-value2, 10).toString(2);
+  return diff;
+
+}
+
+function multiply(value1, value2) {
+  var product = parseInt(value1*value2, 10).toString(2);
+  return product;
+}
+
+function divide(value1, value2) {
+  var quotient = parseInt(value1/value2, 10).toString(2);
+  return quotient;
 }
