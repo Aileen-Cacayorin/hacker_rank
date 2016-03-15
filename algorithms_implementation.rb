@@ -118,3 +118,28 @@ for a in (0..t-1)
     puts (b - a) + 1
 
 end
+
+#Service Lane
+#!/bin/ruby
+n,t = gets.strip.split(' ')
+n = n.to_i
+t = t.to_i
+width = gets.strip
+width = width.split(' ').map(&:to_i)
+
+for a0 in (0..t-1)
+    i,j = gets.strip.split(' ')
+    i = i.to_i
+    j = j.to_i
+    lane_width = width[i]
+    for num in (i..j)
+        if width[num] < lane_width
+            lane_width = width[num]
+        end
+        lane_width
+    end
+    puts lane_width
+end
+
+
+# Insertion Sort - Part 1
