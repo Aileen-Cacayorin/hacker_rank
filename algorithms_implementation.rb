@@ -141,5 +141,31 @@ for a0 in (0..t-1)
     puts lane_width
 end
 
+# Cut the sticks
 
-# Insertion Sort - Part 1
+#!/bin/ruby
+def cut(arr)
+    array = arr
+    while array.count() > 0 do
+        cut_length= array.sort.first
+        cut_sticks = 0
+        n = array.count
+        for i in (0..n-1)
+            cut_sticks += 1
+            array[i] -= cut_length
+        end
+        puts cut_sticks
+        array.each do|number|
+            if number < 1
+                array.delete(number)
+            end
+        end
+        array
+    end
+    array
+end
+n = gets.strip.to_i
+arr = gets.strip
+arr = arr.split(' ').map(&:to_i)
+
+cut(arr)
